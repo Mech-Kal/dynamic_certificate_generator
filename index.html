@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dynamic Certificate Generator</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="style.css">
+
+<!-- Required Libraries -->
+<script src="https://unpkg.com/pizzip@3.1.5/dist/pizzip.js"></script>
+<script src="https://unpkg.com/docxtemplater@3.21.1/build/docxtemplater.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+</head>
+<body>
+
+<!-- Top-right How to Use Button -->
+<button class="info-btn" onclick="openModal()">How to Use?</button>
+
+<!-- Page Heading -->
+<header>
+    <h1>📜 Dynamic Certificate Generator</h1>
+</header>
+
+<!-- STEP 1: Add Parameters -->
+<div id="step1" class="container">
+    <h2>Step 1: Add Parameters</h2>
+    <input type="text" id="paramInput" placeholder="Enter parameter name (e.g., name)">
+    <button onclick="addParameter()">Add</button>
+    <button onclick="completeParameters()">Completed</button>
+    <h3>Parameters:</h3>
+    <ul id="paramList"></ul>
+</div>
+
+<!-- STEP 2: Upload DOCX & Excel -->
+<div id="step2" class="container" style="display:none;">
+    <h2>Step 2: Upload Template & Excel</h2>
+    <p>Parameters: <span id="paramDisplay"></span></p>
+    <label>Upload DOCX Template:</label>
+    <input type="file" id="template" accept=".docx">
+    <label>Upload Excel File:</label>
+    <input type="file" id="excel" accept=".xlsx">
+    <button onclick="generateCertificates()">Generate Certificates</button>
+    <pre id="log"></pre>
+</div>
+
+<!-- HOW TO USE MODAL -->
+<div id="howToUseModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+
+    <h2>📖 How to Use Certificate Generator</h2>
+
+    <h3>Step-by-Step Instructions</h3>
+    <p>1️⃣ Add parameters (like <b>name</b>, <b>rank</b>, <b>category</b>) → click Add.</p>
+    <p>2️⃣ After adding all parameters, click Completed.</p>
+    <p>3️⃣ Upload your DOCX template (certificate template in docx formate) with the same placeholders(i.e. for name placeholder keep it {name} if it not work keep it {{name}}).</p>
+    <p>4️⃣ Upload your Excel file with column names matching parameters (keep column names in lowercase).</p>
+    <p>5️⃣ Click <b>Generate Certificates</b> → it will download one certificate per row.</p>
+    <p>💡 Tip: Your browser may ask permission to allow multiple downloads. Click <b>Allow</b> so that all certificates are downloaded in one go.</p>
+
+    <hr>
+
+    <h3>✔ DOs</h3>
+    <ul>
+      <li>Use DOCX format only.</li>
+      <li>Use placeholders exactly: (<b>{name}</b>, <b>{rank}</b>, <b>{category}</b>) OR (<b>{{name}}</b>, <b>{{rank}}</b>, <b>{{category}}</b>).</li>
+      <li>Excel column names must match placeholders i.e. in lowercase.</li>
+      <li>Keep Word template simple (no text boxes or shapes on top).</li>
+    </ul>
+
+    <h3>❌ DON'Ts</h3>
+    <ul>
+      <li>Don’t put text on top of images inside Word.</li>
+      <li>Don’t rename Excel columns with extra spaces.</li>
+      <li>Don’t use merged cells in Excel.</li>
+      <li>Don’t use .doc or .csv files.</li>
+    </ul>
+
+    <hr>
+
+    <h3>Common Problems & Fixes</h3>
+    <ul>
+      <li><b>Missing name → skipping row:</b> Fill blank cells in Excel.</li>
+      <li><b>TemplateError / Multi error:</b> Check your Word placeholders.</li>
+      <li><b>Docxtemplater not available:</b> Ensure scripts are loaded correctly.</li>
+    </ul>
+
+    <p><b>If you follow these steps carefully, it will work!</b></p>
+    <p>If still problem arise <a href="https://github.com/Mech-Kal/dynamic_certificate_generator">Click Here<a> for git hub and <a href="mailto:kalpak2002@gmail.com">Email Me</a>
+ to contact</p>
+  </div>
+</div>
+
+<!-- JS -->
+<script src="script.js"></script>
+
+</body>
+</html>
