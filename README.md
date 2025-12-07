@@ -73,7 +73,7 @@ All libraries are included via CDN in `index.html`.
 
 ## Folder Structure
 
----bash
+```bash
 /dynamic-certificate-generator
 │
 ├── index.html # Main HTML page
@@ -83,6 +83,7 @@ All libraries are included via CDN in `index.html`.
 ├── sample.xlsx # Example Excel data
 └── README.md # Project documentation
 
+```
 
 ---
 
